@@ -75,7 +75,7 @@ hello.test.services.jtech.se. These DNS names will resolve to the
 respecive clusters. Each cluster must then route hello.platsbanka.nu
 to the correct service when a corresponding http request arrives from Cloudflare.
 
-If you reload "hello.platsbanka.nu" repeatedly, Cloudflare will
+If you reload *hello.platsbanka.nu* repeatedly, Cloudflare will
 round robin between the two clusters, the message will vary depending on
 which cluster answers. Cloudflare will decide which cluster to route
 to according to its own algorithm, and the weight assigned to each
@@ -84,6 +84,7 @@ cluster in the load balancer.
 If you are too lazy to press reload in a browser you can of course use
 curl.
 
+```
 while true;  do curl hello.platsbanka.nu;done
 this is the JAVE cluster
 this is the test cluster
@@ -91,5 +92,6 @@ this is the test cluster
 this is the test cluster
 this is the JAVE cluster
 this is the test cluster
+```
 
 When you get tired of this, press ctrl-c.
