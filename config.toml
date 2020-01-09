@@ -1,4 +1,4 @@
-baseURL = "https://jonassodergren.github.io/blog/"
+baseURL = "https://jonassodergren.github.io/blogtest/"
 languageCode = "en-us"
 title = "Öppna data och källkod"
 theme = "kube"

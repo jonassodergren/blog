@@ -3,35 +3,35 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://jonassodergren.github.io/about/</loc>
+    <loc>https://jonassodergren.github.io/blogtest/about/</loc>
   </url>
   
   <url>
-    <loc>https://jonassodergren.github.io/blog/tryout-jobsearch/</loc>
+    <loc>https://jonassodergren.github.io/blogtest/blog/tryout-jobsearch/</loc>
     <lastmod>2019-11-03T19:24:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jonassodergren.github.io/blog/</loc>
+    <loc>https://jonassodergren.github.io/blogtest/blog/</loc>
     <lastmod>2020-01-09T17:02:08+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jonassodergren.github.io/blog/loadbalancing/</loc>
+    <loc>https://jonassodergren.github.io/blogtest/blog/loadbalancing/</loc>
     <lastmod>2020-01-09T17:02:08+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jonassodergren.github.io/</loc>
+    <loc>https://jonassodergren.github.io/blogtest/</loc>
     <lastmod>2020-01-09T17:02:08+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jonassodergren.github.io/categories/</loc>
+    <loc>https://jonassodergren.github.io/blogtest/categories/</loc>
   </url>
   
   <url>
-    <loc>https://jonassodergren.github.io/tags/</loc>
+    <loc>https://jonassodergren.github.io/blogtest/tags/</loc>
   </url>
   
 </urlset>
