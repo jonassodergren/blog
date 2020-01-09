@@ -4,6 +4,9 @@ title = "Öppna data och källkod"
 theme = "kube"
 description = "Förbättra matchningen på arbetsmarknaden genom att dela öppna data och teknik"
 Paginate = 4
+
+publishDir = "docs"
+
 [Params]
   RSSLink = "/index.xml"
   author = "JobTech Dev" # add your company name
