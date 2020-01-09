@@ -21,8 +21,7 @@
 
 
   <meta property="og:title" content="DevOps - High availability load balancing" />
-<meta property="og:description" content="In order to further improve the availability of Jobtech services we are exploring load balancing over multiple Openshift clusters.
-An Openshift cluster in itself is highly available, and with the deployment we use we can loose an entire worker node and the workloads will evacuate to other worker nodes in order to regain redundancy. In normal cases this means no service interuptions will be noticeable, since workloads are usually deployed redundantly." />
+<meta property="og:description" content="In order to further improve the availability of Jobtech services we are exploring load balancing over multiple Openshift clusters. An Openshift cluster in itself is highly available, and with the deployment we use we can loose an entire worker node and the workloads will evacuate to other worker nodes in order to regain redundancy. In normal cases this means no service interuptions will be noticeable, since workloads are usually deployed redundantly." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jonassodergren.github.io/blogtest/blog/loadbalancing/" />
 <meta property="article:published_time" content="2020-01-09T17:02:08+01:00" />
@@ -90,13 +89,12 @@ An Openshift cluster in itself is highly available, and with the deployment we u
   <main>
 <div class="push-center" itemscope itemtype="http://schema.org/BlogPosting">
     <meta itemprop="name" content="DevOps - High availability load balancing">
-<meta itemprop="description" content="In order to further improve the availability of Jobtech services we are exploring load balancing over multiple Openshift clusters.
-An Openshift cluster in itself is highly available, and with the deployment we use we can loose an entire worker node and the workloads will evacuate to other worker nodes in order to regain redundancy. In normal cases this means no service interuptions will be noticeable, since workloads are usually deployed redundantly.">
+<meta itemprop="description" content="In order to further improve the availability of Jobtech services we are exploring load balancing over multiple Openshift clusters. An Openshift cluster in itself is highly available, and with the deployment we use we can loose an entire worker node and the workloads will evacuate to other worker nodes in order to regain redundancy. In normal cases this means no service interuptions will be noticeable, since workloads are usually deployed redundantly.">
 
 
 <meta itemprop="datePublished" content="2020-01-09T17:02:08&#43;01:00" />
 <meta itemprop="dateModified" content="2020-01-09T17:02:08&#43;01:00" />
-<meta itemprop="wordCount" content="538">
+<meta itemprop="wordCount" content="540">
 
 
 
@@ -120,22 +118,28 @@ An Openshift cluster in itself is highly available, and with the deployment we u
 <div id="post-box">
 <div id="post" itemprop="articleBody">
 
-    <p>In order to further improve the availability of Jobtech services we
-are exploring load balancing over multiple Openshift clusters.</p>
+    
 
-<p>An Openshift cluster in itself is highly available, and with the
+<p>In order to further improve the availability of Jobtech services we
+are exploring load balancing over multiple Openshift clusters.
+<img src="../../openshift.jpeg" alt="OpenShift load balancing" />
+An Openshift cluster in itself is highly available, and with the
 deployment we use we can loose an entire worker node and the workloads
 will evacuate to other worker nodes in order to regain redundancy. In
 normal cases this means no service interuptions will be noticeable,
 since workloads are usually deployed redundantly.</p>
 
+<h3 id="problem">Problem</h3>
+
 <p>However, if the entire cluster fails, we are out of luck. This is not
 a hypothetical scenario, it happened once because of certificate
 expirations that went unnoticed.</p>
 
+<blockquote>
 <p>Deploying new Openshift clusters at other cloud providers is quite
 feasible since Openshift 4.2 where the installer was much improved
 since the previous versions we have been using, 3.10 and 3.11.</p>
+</blockquote>
 
 <p>Deploying our services reduntantly over several clusters is also
 something we have explored using the skopeo command to copy images
@@ -146,43 +150,47 @@ different clusters.</p>
 
 <p>Several options where evaluated:</p>
 
-<p>DNS round robin. This is simple, but not reliable. DNS record TTL
-makes it difficult to fail-over between clusters reliably</p>
-
-<p>Client based routing. This will increase complexity at the client
+<ul>
+<li>DNS round robin. This is simple, but not reliable. DNS record TTL
+makes it difficult to fail-over between clusters reliably</li>
+<li>Client based routing. This will increase complexity at the client
 side. This is reliable and gives the client and opportunity to decide
-what to do during backend outtages.</p>
+what to do during backend outtages.</li>
+<li>External load balancer service that spans over cloud providers.</li>
+</ul>
 
-<p>External load balancer service that spans over cloud providers.</p>
+<h3 id="solution">Solution</h3>
 
 <p>We believe using an external load balancer service such as Cloudflare
 will make it easy to implement our API:s, and it can co-exist with
 client based routing for organizations that need greater control.</p>
 
-<p>We will explore Cloudflare next.</p>
+<p><strong>We will explore Cloudflare next.</strong></p>
 
 <p>First we need a hello-world service in each cluster we are going to be
 load balancing between.</p>
 
-<p>test.services.jtech.se and jave.services.jtech.se clusters will be
-used. The endpoint will be called hello.platsbanka.nu</p>
+<p><em>test.services.jtech.se</em> and <em>jave.services.jtech.se clusters</em> will be
+used. The endpoint will be called <em>hello.platsbanka.nu</em></p>
 
-<p>Platsbanka.nu is a debug domain at Loopia that was used for this test. We also
+<p><em>Platsbanka.nu</em> is a debug domain at Loopia that was used for this test. We also
 made a lbjobtechdev.se domain at AWS route53, but there were problems
 propagating the DNS SOA and NS record changes needed to use
 Cloudflare, so we couldn&rsquo;t use this domain for these tests.</p>
 
 <p>In each cluster do:</p>
 
-<p>oc new-project hello
+<pre><code>oc new-project hello
 oc new-app openshift/hello-openshift
-oc expose svc/hello-openshift</p>
+oc expose svc/hello-openshift
+</code></pre>
 
 <p>Then set the environment variable RESPONSE in the deployment to
 something that identifies the cluster and create the route.</p>
 
-<p>oc expose svc/hello-openshift &ndash;hostname=hello.platsbanka.nu &ndash;name=hello-openshift-cloudflare-pool
-oc set env dc/hello-openshift RESPONSE=&ldquo;this is the JAVE/TEST cluster&rdquo;</p>
+<pre><code>oc expose svc/hello-openshift --hostname=hello.platsbanka.nu --name=hello-openshift-cloudflare-pool
+oc set env dc/hello-openshift RESPONSE=&quot;this is the JAVE/TEST cluster&quot;
+</code></pre>
 
 <p>Create a load balancer service in Cloudflare, and create a pool,
 hello-pool. Origin servers will be hello.jave.services.jtech.se and
@@ -227,7 +235,7 @@ this is the test cluster</p>
   </time>
   
   
-  using <span itemprop="wordCount">538</span> words.
+  using <span itemprop="wordCount">540</span> words.
 </p>
 
         

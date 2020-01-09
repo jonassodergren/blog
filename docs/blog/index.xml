@@ -29,8 +29,7 @@ curl -X GET &amp;quot;https://jobstream.api.jobtechdev.se/stream?date=2019-10-01
       <pubDate>Thu, 09 Jan 2020 17:02:08 +0100</pubDate>
       
       <guid>https://jonassodergren.github.io/blogtest/blog/loadbalancing/</guid>
-      <description>In order to further improve the availability of Jobtech services we are exploring load balancing over multiple Openshift clusters.
-An Openshift cluster in itself is highly available, and with the deployment we use we can loose an entire worker node and the workloads will evacuate to other worker nodes in order to regain redundancy. In normal cases this means no service interuptions will be noticeable, since workloads are usually deployed redundantly.</description>
+      <description>In order to further improve the availability of Jobtech services we are exploring load balancing over multiple Openshift clusters. An Openshift cluster in itself is highly available, and with the deployment we use we can loose an entire worker node and the workloads will evacuate to other worker nodes in order to regain redundancy. In normal cases this means no service interuptions will be noticeable, since workloads are usually deployed redundantly.</description>
     </item>
     
   </channel>
