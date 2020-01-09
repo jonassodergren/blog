@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.58.3" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> API - Jobsearch </title>
+
+  
+  <meta name="description" content="Sök bland alla annonser i Platsbanken "> 
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="JobTech Dev">
+
+
+  <meta property="og:title" content="API - Jobsearch" />
+<meta property="og:description" content="Sök bland alla annonser i Platsbanken " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jonassodergren.github.io/docs/jobsearch/" />
+<meta property="article:published_time" content="2019-11-03T19:21:47+01:00" />
+<meta property="article:modified_time" content="2019-11-03T19:21:47+01:00" />
+
+  
+
+
+
+
+  
+  
+  
+  
+  
+
+  <link rel="canonical" href="https://jonassodergren.github.io/docs/jobsearch/">  
+
+  <link rel="shortcut icon" type="image/png" href="data:image/png;base64,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RvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3Eld+D/AfhEhmLqHBsfAAAAAElFTkSuQmCC">
+
+
+  <link href="/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="/css/master.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+ <link href="/css/custom.css" rel="stylesheet" type="text/css">
+
+  <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+      <div id="nav-toggle-brand">
+        <a href="/">JobTech Dev</a>
+      </div><a data-component="toggleme" data-target="#top" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="/" title="home">JobTech Dev</a>
+    </div>
+    <nav id="top-nav-main">
+      <ul>
+       
+       
+    <li><a href="/docs/" >API</a></li>
+    
+    <li><a href="/blog/" >Blogg</a></li>
+    
+    <li><a href="/faq/" >Kontakt</a></li>
+    
+      </ul>
+    </nav>
+    <nav id="top-nav-extra">
+      <ul>
+        
+      </ul>
+    </nav>
+  </div>
+ </header>
+  <main>
+  <div id="main">
+    <div id="hero">
+      <h1> API - Jobsearch </h1>
+      <p class="hero-lead">
+           Gör slagningar bland alla annonser.
+      </p>
+
+    </div> 
+    <div id="kube-component" class="content">
+    
+<nav id="contents">
+    <ol class="js-toc">
+    </ol>
+</nav>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '.content',
+
+headingSelector: 'h3'
+})
+}
+);
+</script>
+
+
+
+    
+
+<h1 id="getting-started">Getting started</h1>
+
+<p>The aim of this text is to walk you through what you&rsquo;re seeing in the <a href="https://jobsearch.api.jobtechdev.se">Swagger-UI</a> to give you a bit of orientation on what can be done with the Job Search API. If you are just looking for a way to fetch all the ads please use our <a href="https://jobstream.api.jobtechdev.se">bulk load API</a>
+The search API is intended for user search not downloading all the job ads. We may invalidate your API Keys if you make excessive amounts of calls that don&rsquo;t fit the intended purpose of this API.</p>
+
+<p>A bad practice typically means searching for every job of every region every fifth minute.
+A good practice means making lots of varied calls initiated by real users.</p>
+
+<h1 id="table-of-contents">Table of Contents</h1>
+
+<ul>
+<li><a href="#Authentication">Authentication</a></li>
+<li><a href="#Endpoints">Endpoints</a></li>
+<li><a href="#Results">Results</a></li>
+<li><a href="#Errors">Errors</a></li>
+<li><a href="#Use-cases">Use cases</a></li>
+</ul>
+
+<h2 id="short-introduction">Short introduction</h2>
+
+<p>The endpoints for the ads search API are:</p>
+
+<ul>
+<li><a href="#Ad-Search">search</a> - returning ads matching a search phrase.</li>
+<li><a href="#Typeahead">complete</a> - returning common words matching a search phrase. Useful for autocomplete.</li>
+<li><a href="#Ad">ad</a> - returning the ad matching an id.</li>
+<li><a href="#Logo">logo</a> - returns the logo for an ad.</li>
+</ul>
+
+<p>Easiest way to try out the API is to go to the <a href="https://jobsearch.api.jobtechdev.se/">swagger page</a>.
+But first you need a key which you need to authenticate yourself.</p>
+
+<p>If you want to get all ads in a bulk, please use our <a href="https://jobtechdev.se/devguide/apis/jobstream.html">Stream API</a>.</p>
+
+<h2 id="authentication">Authentication</h2>
+
+<p>For this API, you will need to register to get your own API key at <a href="https://apirequest.jobtechdev.se">apirequest.jobtechdev.se</a></p>
+
+<h2 id="endpoints">Endpoints</h2>
+
+<p>Below we only show the URLs. If you prefer the curl command, you type it like:</p>
+
+<pre><code>curl &quot;{URL}&quot; -H &quot;accept: application/json&quot; -H &quot;api-key: {proper_key}&quot;
+</code></pre>
+
+<h3 id="ad-search">Ad search</h3>
+
+<p>/search?q={search text}</p>
+
+<p>The search endpoint in the first section will return job ads that are currently open for applications.
+The API is meant for searching, we want to offer you the possibility to just build your own customized GUI on top of our free text query field &ldquo;q&rdquo; in /search like this &hellip;</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/search?q=Flen&amp;offset=0&amp;limit=10
+</code></pre>
+
+<p>This means you don&rsquo;t need to worry about how to build an advanced logic to help the users finding the most relevant ads for, let&rsquo;s say, Flen. The search engine will do this for you.
+If you want to narrow down the search result in other ways than the free query offers, you can use the available search filters. Some of the filters need id-keys as input for searching structured data. The id-keys can be found at /taxonomy/search these will help you get sharper hits for structured data. We will always work on improving the hits for free queries hoping you&rsquo;ll have less and less use for filtering.</p>
+
+<h3 id="typeahead">Typeahead</h3>
+
+<p>/complete?q={typed string}</p>
+
+<p>If you want to help your end users with term suggestions you can use the typeahead function, which will return common terms found in the job ads. This should work great with an auto complete feature in your search box. If you request &hellip;</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/complete?q=stor
+</code></pre>
+
+<p>&hellip; you&rsquo;ll get storkök, storhushåll, storesupport, and storage as they are the most common terms starting with &ldquo;stor*&rdquo; in ads.</p>
+
+<p>If you request</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/complete?q=storage%20s
+</code></pre>
+
+<p>&hellip; you&rsquo;ll get sverige, stockholms län, stockholm, svenska, and script since they are the most common terms beginning with &ldquo;s&rdquo; for ads that contain the word &ldquo;storage&rdquo;</p>
+
+<h3 id="ad">Ad</h3>
+
+<p>/ad/{id}</p>
+
+<p>This endpoint is used for fetching specific job ads with all available meta data, by their ad ID number. The ID number can be found by doing a search query.</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/ad/8430129
+</code></pre>
+
+<h3 id="logo">Logo</h3>
+
+<p>/ad/{id}/logo</p>
+
+<p>This endpoint returns the logo for a given ad&rsquo;s id number.</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/ad/8430129/logo
+</code></pre>
+
+<h3 id="jobtech-taxonomy">Jobtech-Taxonomy</h3>
+
+<p>If you need help finding the official names for occupations, skills, or geographic place we have temporarily built an endpoint which you will find at <a href="https://jobsearch.api.jobtechdev.se/">https://jobsearch.api.jobtechdev.se/</a>. The real version will be launched during fall 2019. Check out <a href="https://www.jobtechdev.se/">jobtechdev.se</a> for updates.</p>
+
+<h2 id="results">Results</h2>
+
+<p>The results of your queries will be in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> format. We won&rsquo;t attempt to explain this attribute by attribute in this document. Instead we&rsquo;ve decided to try to include this in the data model which you can find in our <a href="https://jobsearch.api.jobtechdev.se">Swagger GUI</a>.</p>
+
+<p>Successful queries will have a response code of 200 and give you a result set that consists of:
+1. Some meta data about your search such as number of hits and the time it took to execute the query and
+2. The ads that matched your search.</p>
+
+<h2 id="errors">Errors</h2>
+
+<p>Unsuccessful queries will have a response code of:</p>
+
+<table>
+<thead>
+<tr>
+<th>HTTP Status code</th>
+<th>Reason</th>
+<th>Explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Something wrong in the query</td>
+</tr>
+
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>You are not using a valid API key</td>
+</tr>
+
+<tr>
+<td>404</td>
+<td>Missing ad</td>
+<td>The ad you requested is not available</td>
+</tr>
+
+<tr>
+<td>429</td>
+<td>Rate limit exceeded</td>
+<td>You requested too much during too short time</td>
+</tr>
+
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>Something wrong on the server side</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="use-cases">Use cases</h2>
+
+<p>To help you find your way forward, here are some example of use cases:</p>
+
+<ul>
+<li><a href="#Searching-for-a-particular-job-title">Searching for a particular job title</a></li>
+<li><a href="#Searching-only-within-a-specific-field-of-work">Searching only within a specific field of work</a></li>
+<li><a href="#Finding-jobs-near-you">Finding jobs near you</a></li>
+<li><a href="#Negative-search">Negative search</a></li>
+<li><a href="#Finding-Swedish-speaking-jobs-abroad">Finding Swedish speaking jobs abroad</a></li>
+<li><a href="#Finding-jobs-in-the-public-sector">Finding jobs in the public sector</a></li>
+<li><a href="#Customise-the-result-set">Customise the result set</a></li>
+<li><a href="#Getting-all-the-jobs-since-date-and-time">Getting all the jobs since date and time</a></li>
+</ul>
+
+<h4 id="searching-for-a-particular-job-title">Searching for a particular job title</h4>
+
+<p>The easiest way to get the ads that contain a specific word like a job title is to use a free text query (q) with the <em>Open-Search</em> endpoint. This will give you ads with the specified word in either headline, ad description or place of work.</p>
+
+<p>Request URL</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/search?q=souschef&amp;offset=0&amp;limit=10
+</code></pre>
+
+<p>If you want to be certain that the ad is for a &ldquo;souschef&rdquo; - and not just mentions a &ldquo;souschef&rdquo; - you can use the occupation ID in the field &ldquo;occupation&rdquo;. If the ad has been registered by the recruiter with the occupation field set to &ldquo;souschef&rdquo;, the ad will show up in this search. To do this query you use both the <em>Jobtech-Taxonomy</em> endpoint and the <em>Open-Search</em> endpoint. First of all, you need to find the occupation ID for &ldquo;souschef&rdquo; by text searching (q) in <em>Jobtech Taxonomy</em> for the term in the right category (occupation-name).</p>
+
+<p>Request URL</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/taxonomy/search?offset=0&amp;limit=10&amp;q=souschef
+</code></pre>
+
+<p>Now you can use the conceptId (iugg_Qq9_QHH) in <em>Open-Search</em> to fetch the ads registered with the term &ldquo;souschef&rdquo; in the occupation-name field:</p>
+
+<p>Request URL</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/search?occupation-name=iugg_Qq9_QHH&amp;offset=0&amp;limit=10
+</code></pre>
+
+<p>This will give a smaller result set with a higher certainty of actually being for a &ldquo;souschef&rdquo;, however the result set will likely miss a few relevant ads since the occupation-name field isn&rsquo;t always set by employers. You should find that a larger set is more useful since there are multiple sorting factors working to show the most relevant hits first. We&rsquo;re also working to always improve the API in regards to unstructured data.</p>
+
+<p><em>Note: The taxonomy endpoint is temporary. Please check <a href="https://www.jobtechdev.se/">jobtechdev.se</a> for updates.</em></p>
+
+<h3 id="searching-only-within-a-specific-field-of-work">Searching only within a specific field of work</h3>
+
+<p>Firstly, use the <em>Jobtech-Taxonomy</em> endpoint to get the Id for Data/IT (occupation field). You&rsquo;ll then make a free text search on the term &ldquo;IT&rdquo; narrowing down the search to occupation-field</p>
+
+<p>Request URL</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/taxonomy/search?offset=0&amp;limit=10&amp;q=IT
+</code></pre>
+
+<p>In the response body you’ll find the conceptId (apaJ_2ja_LuF)for the term Data/IT. Use this with the search endpoint to define the field in which you want to get all the open-api. So now I want to combine this with my favorite language without all those snake related jobs ruining my search.</p>
+
+<p>Request URL</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/search?occupation-field=apaJ_2ja_LuF&amp;q=python&amp;offset=0&amp;limit=10
+</code></pre>
+
+<p><em>Note: The taxonomy endpoint is temporary. Please check <a href="https://www.jobtechdev.se/">jobtechdev.se</a> for updates.</em></p>
+
+<h3 id="finding-jobs-near-you">Finding jobs near you</h3>
+
+<p>You can filter your search on geographical terms picked up from the Taxonomy just the same way you can with occupation-titles and occupation-fields. (Concept_id doesn&rsquo;t work everywhere at the time of writing but you can use the numeral id&rsquo;s, they are very official and way less likely to change as skills and occupations sometimes do)
+If you want to search for jobs in Norway you may free text query the taxonomy for &ldquo;Norge&rdquo;</p>
+
+<p>Request URL</p>
+
+<pre><code>   https://jobsearch.api.jobtechdev.se/taxonomy/search?offset=0&amp;limit=10&amp;q=norge
+</code></pre>
+
+<p>And add that parameter conceptId (QJgN_Zge_BzJ) to the country field</p>
+
+<p>Request URL</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/search?country=QJgN_Zge_BzJ&amp;offset=0&amp;limit=10
+</code></pre>
+
+<p>If I make a query which includes 2 different geographical filters the most local one will be promoted. As in this case where I&rsquo;m searching for &ldquo;lärare&rdquo; using the municipality code for Haparanda (tfRE_hXa_eq7) and the region code for Norrbottens Län (9hXe_F4g_eTG). The jobs that are in Haparanda will be the first ones in the result set.</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/search?municipality=tfRE_hXa_eq7&amp;region=9hXe_F4g_eTG&amp;q=l%C3%A4rare
+</code></pre>
+
+<p>You can also use longitude latitude coordinates and a radius in kilometers if you want.</p>
+
+<p>Request URL</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/search?offset=0&amp;limit=10&amp;position=59.3,17.6&amp;position.radius=10
+</code></pre>
+
+<p><em>Note: The taxonomy endpoint is temporary. Please check <a href="https://www.jobtechdev.se/">jobtechdev.se</a> for updates.</em></p>
+
+<h3 id="negative-search">Negative search</h3>
+
+<p>So, this is very simple using our q-field. Let&rsquo;s say you want to find Unix jobs</p>
+
+<p>Request URL</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/search?q=unix&amp;offset=0&amp;limit=10
+</code></pre>
+
+<p>But you find that you get a lot of jobs expecting you to work with which you dont want. All that&rsquo;s needed is to use the minus symbol and the word you want to exclude.</p>
+
+<p>Request URL</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/search?q=unix%20-linux&amp;offset=0&amp;limit=10
+</code></pre>
+
+<h3 id="finding-swedish-speaking-jobs-abroad">Finding Swedish speaking jobs abroad</h3>
+
+<p>Sometimes a filter can work too broadly and then it&rsquo;s easier to use a negative search to remove specific results you don&rsquo;t want. In this case we will show you how to filter out all the jobs in Sweden. Rather than adding a minus Sweden in the q field &ldquo;-sverige&rdquo; you can use the country code and the country field in the search. So first you get the country code for &ldquo;Sverige&rdquo; from the taxonomy endpoint.</p>
+
+<p>Request URLs to get conceptId for Sweden and Swedish</p>
+
+<pre><code>https://jobsearch.api.jobtechdev.se/taxonomy/search?offset=0&amp;limit=10&amp;q=sverige&amp;type=country
+https://jobsearch.api.jobtechdev.se/taxonomy/search?offset=0&amp;limit=10&amp;q=svenska&amp;type=language
+</code></pre>
+
+<p>As return we get id 199 for &ldquo;Sverige&rdquo; and id 502 for &ldquo;Svenska&rdquo;.</p>
+
+<p>Request URL to get jobs in Swedish outside Sweden</p>
+
+<pre><code>    https://jobsearch.api.jobtechdev.se/search?language=502&amp;country=-199&amp;offset=0&amp;limit=10
+</code></pre>
+
+<p><em>Note: The taxonomy endpoint is temporary. Please check <a href="https://www.jobtechdev.se/">jobtechdev.se</a> for updates.</em></p>
+
+<h3 id="finding-jobs-in-the-public-sector">Finding jobs in the public sector</h3>
+
+<p>In Sweden, organizations number reflect type of organization. For instance is the first figura a two if the organization is a public organization. This could be used in you search.</p>
+
+<p>Request URL to get jobs in Swedish public sector</p>
+
+<pre><code>    https://jobsearch.api.jobtechdev.se/search?employer=2&amp;offset=0&amp;limit=10
+</code></pre>
+
+<h3 id="customize-the-result-set">Customize the result set</h3>
+
+<p>There&rsquo;s a lot of reasons you might want less fields for your search result set. In this case the idea is a map-based job search that plots needles where the jobs can be found based on a user search. Everything needed is the GPS coordinates for the needle and the id, employer, and headline for the ad so more info can be fetched once the user clicks on the needle. Probably, you also like to know total number of ads.
+In the Swagger GUI it&rsquo;s possible to use the X-fields to define which fields to include in result set. This mask will look like this</p>
+
+<pre><code>total{value}, hits{id, headline, workplace_address{coordinates}, employer{name}}
+</code></pre>
+
+<p>This will create an extra header displayed in the curl example in Swagger. So, this example will look like this</p>
+
+<pre><code>curl &quot;https://jobsearch.api.jobtechdev.se/search?q=skogsarbetare&amp;offset=0&amp;limit=10&quot; -H &quot;accept: application/json&quot; -H &quot;api-key: &lt;proper_key&gt;&quot; -H &quot;X-Fields: total{value}, hits{id, headline, workplace_address{coordinates}, employer{name}}&quot;
+</code></pre>
+
+<h3 id="getting-all-the-jobs-since-date-and-time">Getting all the jobs since date and time</h3>
+
+<p>A very common use case is COLLECT ALL THE ADS. We don&rsquo;t want you to use the search API for this. It&rsquo;s expensive in terms of bandwidth, CPU cycles and development time and it&rsquo;s not even guaranteed you&rsquo;ll get everything. Instead we&rsquo;d like you to use our <a href="https://jobtechdev.se/devguide/apis/jobstream.html">Stream API</a>.</p>
+
+
+    
+    </div>
+    </div>
+</main>
+  <footer></footer>
+
+
+  <script src="/js/kube.js" type="text/javascript">
+  </script>
+  <script src="/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="/js/master.js" type="text/javascript">
+  </script>
+</body>
+
+</html>

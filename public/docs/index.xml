@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on Öppna data och källkod</title>
+    <link>https://jonassodergren.github.io/docs/</link>
+    <description>Recent content in Docs on Öppna data och källkod</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Nov 2019 19:21:47 +0100</lastBuildDate>
+    
+	<atom:link href="https://jonassodergren.github.io/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>API - Jobsearch</title>
+      <link>https://jonassodergren.github.io/docs/jobsearch/</link>
+      <pubDate>Sun, 03 Nov 2019 19:21:47 +0100</pubDate>
+      
+      <guid>https://jonassodergren.github.io/docs/jobsearch/</guid>
+      <description>Getting started The aim of this text is to walk you through what you&amp;rsquo;re seeing in the Swagger-UI to give you a bit of orientation on what can be done with the Job Search API. If you are just looking for a way to fetch all the ads please use our bulk load API The search API is intended for user search not downloading all the job ads. We may invalidate your API Keys if you make excessive amounts of calls that don&amp;rsquo;t fit the intended purpose of this API.</description>
+    </item>
+    
+  </channel>
+</rss>
