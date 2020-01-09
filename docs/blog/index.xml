@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Öppna data och källkod</title>
+    <link>https://jonassodergren.github.io/blog/</link>
+    <description>Recent content in Blogs on Öppna data och källkod</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Jan 2020 17:02:08 +0100</lastBuildDate>
+    
+	<atom:link href="https://jonassodergren.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Jobsearch API - Enkel marknadsanalys</title>
+      <link>https://jonassodergren.github.io/blog/tryout-jobsearch/</link>
+      <pubDate>Sun, 03 Nov 2019 19:24:42 +0100</pubDate>
+      
+      <guid>https://jonassodergren.github.io/blog/tryout-jobsearch/</guid>
+      <description>Hösten 2019 lanserade det nya API:et jobstream för att hämta alla platsannonser från Platsbanken. Men hur enkelt är det egentligen?
+Det är värdefull för många företag, myndigheter och personer att enkelt få tillgång till all annonsdata. För att prova behövde jag ett problem att försöka lösa.
+Hur många rekryteringssystem finns på marknaden som kräver att en CV laddas upp för att kunna ansöka om ett jobb.
+curl -X GET &amp;quot;https://jobstream.api.jobtechdev.se/stream?date=2019-10-01&amp;quot; -H &amp;quot;accept: application/json&amp;quot; -H &amp;quot;api-key: {GET_YOUR_KEY:https://apirequest.</description>
+    </item>
+    
+    <item>
+      <title>DevOps - High availability load balancing</title>
+      <link>https://jonassodergren.github.io/blog/loadbalancing/</link>
+      <pubDate>Thu, 09 Jan 2020 17:02:08 +0100</pubDate>
+      
+      <guid>https://jonassodergren.github.io/blog/loadbalancing/</guid>
+      <description>In order to further improve the availability of Jobtech services we are exploring load balancing over multiple Openshift clusters.
+An Openshift cluster in itself is highly available, and with the deployment we use we can loose an entire worker node and the workloads will evacuate to other worker nodes in order to regain redundancy. In normal cases this means no service interuptions will be noticeable, since workloads are usually deployed redundantly.</description>
+    </item>
+    
+  </channel>
+</rss>
