@@ -28,7 +28,7 @@ curl -X GET "https://jobstream.api.jobtechdev.se/stream?date=2019-10-01" -H "acc
 ```
 
 
-Att skapa en API-nyckel och att ställa ovan fråga är gjort på under sexfem minuter.
+Att skapa en API-nyckel och att ställa ovan fråga är gjort på under fem minuter.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0NDA4ODc2MF19
+eyJoaXN0b3J5IjpbMTU2NzU3NjU0MF19
 -->
