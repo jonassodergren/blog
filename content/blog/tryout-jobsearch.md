@@ -4,7 +4,7 @@ description = ""
 date = 2019-11-03T19:24:42+01:00
 weight = 20
 draft = false
-bref = "Vilken nytta kan skapas på 5 minuter"
+bref = "Vilken nytta kan skapas på 6 minuter"
 toc = true
 +++
 Hösten 2019 lanserade det nya API:et jobstream för att hämta alla platsannonser från Platsbanken. Men hur enkelt är det egentligen?

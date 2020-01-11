@@ -1,11 +1,11 @@
-baseURL = "https://jonassodergren.github.io/blogtest/"
+baseURL = "https://jonassodergren.github.io/"
 languageCode = "en-us"
 title = "Öppna data och källkod"
 theme = "kube"
 description = "Förbättra matchningen på arbetsmarknaden genom att dela öppna data och teknik"
 Paginate = 4
 
-publishDir = "docs"
+publishDir = "public"
 
 [Params]
   RSSLink = "/index.xml"
