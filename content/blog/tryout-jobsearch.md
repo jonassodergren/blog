@@ -10,10 +10,13 @@ toc = true
 Hösten 2019 lanserade det nya API:et jobstream för att hämta alla platsannonser från Platsbanken. Men hur enkelt är det egentligen?
 
 
+
 Det är värdefull för många företag, myndigheter och personer att enkelt få tillgång till all annonsdata. För att prova behövde jag ett problem att försöka lösa.
 
 
+
 _Hur många rekryteringssystem finns på marknaden som kräver att en CV laddas upp för att kunna ansöka om ett jobb._
+
 
 
 ```bash
@@ -28,7 +31,8 @@ curl -X GET "https://jobstream.api.jobtechdev.se/stream?date=2019-10-01" -H "acc
 ```
 
 
-Att skapa en API-nyckel och att ställa ovan fråga är gjort på under fem minuter.
+
+Att skapa en API-nyckel och att ställa ovan fråga är gjort på under femsex minuter.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2NzU3NjU0MF19
+eyJoaXN0b3J5IjpbMTE2MzM5NjA3MiwxNTY3NTc2NTQwXX0=
 -->
