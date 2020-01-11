@@ -24,4 +24,4 @@ curl -X GET "https://jobstream.api.jobtechdev.se/stream?date=2019-10-01" -H "acc
     uniq > ansokningssystem_october.file
 ```
 
-Att skapa en API-nyckel och att ställa ovan fråga är gjort på under fem minuter.
+Att skapa en API-nyckel och att ställa ovan fråga är gjort på under sex minuter.
