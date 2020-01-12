@@ -25,6 +25,6 @@ jobs:
       uses: peaceiris/actions-gh-pages@v2
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.DEPLOY }}
-        EXTERNAL_REPOSITORY: jonassodergren/jonassodergren.github.io:  
+      #  EXTERNAL_REPOSITORY: jonassodergren/jonassodergren.github.io:  
         PUBLISH_BRANCH: master
         PUBLISH_DIR: ./public
