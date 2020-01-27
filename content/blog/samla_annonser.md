@@ -24,7 +24,7 @@ __Download__ - Delar av annonserna görs tillgänglig som öppna data som alla k
 
 Principen om _back-to-source_, d.v.s. att leda användaren tillbaka till ursprungssajten är den mest kritiska för en hållbar satsning.
 
-## Plan Q1-Q2 2010
+## Plan Q1-Q2 2020
 Genomföra en pilot och skrapa ca 10 sajter för att utvärdera konceptet. En gemensam utvärdering utförs i Q2 2020 av arbetsförmedlingen och de skrapade annonssajterna.
 
 En del av utvärderingen består utav att:
