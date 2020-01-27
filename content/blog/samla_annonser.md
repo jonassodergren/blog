@@ -1,5 +1,6 @@
 ---
 title: "Samla Sveriges annonser"
+thumbnail: "scraping.png"
 date: 2020-01-25T17:02:08+01:00
 draft: false
 ---
@@ -14,8 +15,8 @@ En mer tillgänglig arbetsmarknad där alla enklare hittar till de jobb som finn
 * Annonssajter får mer exponering för sina annonser
 * Fler besökare till annonssajterna
 
-## Erbjudande till de deltagare
-Insamlingen av annonser bygger på skrapning och förväntas innebära låga trösklar för annonssajterna att ansluta till. Det som krävs är ett godkännande från bolaget som blir skrapat. Följande är de två tänkta erbjudandena.
+## Erbjudande
+Insamlingen av annonser bygger på skrapning och anslutningen för annonssajterna är enkel. Det som krävs är ett godkännande från bolaget som blir skrapat. Följande är de två tänkta erbjudandena.
 
 __Upload__ - Arbetsförmedlingen skrapar din sajt kostnadsfritt. Genom en berikningsprocess adderas metadata om kompetenser till annonserna.
 
@@ -28,6 +29,12 @@ En del av utvärderingen är att:
 
 * Säkerställa att annonskällan respekteras
 * Utröna att det finns en efterfrågan på öppna data om annonser
+
+## Open source
+* Tekniken kommer från scrapinghub och är [open source](https://github.com/scrapinghub).
+* Källkoden till den kod som utvecklas för respektive sajt finns hos [JobTech](https://github.com/JobTechSwe)  
+
+En viktig fråga är hur en annons uttrycks. Resultatet av skrapningen kommer att använda ett känt [format](https://schema.org/JobPosting).
 
 ## Kontakt
 Vid frågor kontaktas Jonas Södergren.
