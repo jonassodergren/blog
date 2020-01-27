@@ -1,6 +1,6 @@
 ---
 title: "Samla Sveriges annonser"
-thumbnail: "scraping.png"
+thumbnail: "/scraping.png"
 date: 2020-01-25T17:02:08+01:00
 draft: false
 ---
